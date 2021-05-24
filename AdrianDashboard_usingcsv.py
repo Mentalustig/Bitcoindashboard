@@ -88,9 +88,8 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 with first_kpi:
     st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
-    number1 = getrig.activeDevices[0]
-    number11 = getrig.totalDevices[0]]
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}\n{number11}</h1>", unsafe_allow_html=True)
+    number1 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
     st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
@@ -133,6 +132,66 @@ with nineth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
     
 st.markdown("<hr/>", unsafe_allow_html=True)
+
+st.markdown("## Mining Rig KPIs Trial 2")
+
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
+
+
+with first_kpi:
+    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
+    chart_data = getrig.iloc[0,-2:]
+    st.bar_chart(chart_data)
+
+with second_kpi:
+    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
+    chart_data = getrig.iloc[1,-2:]
+    st.bar_chart(chart_data)
+
+with third_kpi:
+    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]} active/totaldevices**")
+    chart_data = getrig.iloc[2,-2:]
+    st.bar_chart(chart_data)
+    
+with fourth_kpi:
+    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]} active/totaldevices**")
+    chart_data = getrig.iloc[3,-2:]
+    st.bar_chart(chart_data)
+
+with fifth_kpi:
+    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]} active/totaldevices**")
+    chart_data = getrig.iloc[4,-2:]
+    st.bar_chart(chart_data)
+
+with sixth_kpi:
+    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]} active/totaldevices**")
+    chart_data = getrig.iloc[5,-2:]
+    st.bar_chart(chart_data)
+
+with seventh_kpi:
+    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]} active/totaldevices**")
+    chart_data = getrig.iloc[6,-2:]
+    st.bar_chart(chart_data)
+
+with eigth_kpi:
+    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]} active/totaldevices**")
+    chart_data = getrig.iloc[7,-2:]
+    st.bar_chart(chart_data)
+
+with nineth_kpi:
+    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]} active/totaldevices**")
+    chart_data = getrig.iloc[8,-2:]
+    st.bar_chart(chart_data)
+
+st.markdown("<hr/>", unsafe_allow_html=True)
+
+st.markdown("## Mining Rig KPIs Trial 3")
+st.markdown("Profitability per rig")
+st.bar_chart(getrig.profitability)
+
+st.markdown("Total power usage per rig")
+st.bar_chart(getrig.totalpowerusage)
+
 
 first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
@@ -182,7 +241,6 @@ with nineth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
-
 
 
 st.markdown("## Total Gain and Total Value vs Invested")
