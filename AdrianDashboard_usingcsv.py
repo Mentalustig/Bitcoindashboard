@@ -131,43 +131,44 @@ with nineth_kpi:
     number9 = [getrig.activeDevices[8], getrig.totalDevices[8]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
     
+st.markdown("<hr/>", unsafe_allow_html=True)
 
 first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
 with first_kpi:
-    number1 = [getrig.profitability[0], getrig.totalpowerusage[0]]
+    number1 = [round(getrig.profitability[0],4), getrig.totalpowerusage[0]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
-    number2 = [getrig.profitability[1], getrig.totalpowerusage[1]]
+    number2 = [round(getrig.profitability[1],4), getrig.totalpowerusage[1]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
-    number3 = [getrig.profitability[2], getrig.totalpowerusage[2]]
+    number3 = [round(getrig.profitability[2],4), getrig.totalpowerusage[2]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
-    number4 = [getrig.profitability[3], getrig.totalpowerusage[3]]
+    number4 = [round(getrig.profitability[3],4), getrig.totalpowerusage[3]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    number5 = [getrig.profitability[4], getrig.totalpowerusage[4]]
+    number5 = [round(getrig.profitability[4],4), getrig.totalpowerusage[4]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    number6 = [getrig.profitability[5], getrig.totalpowerusage[5]]
+    number6 = [round(getrig.profitability[5],4), getrig.totalpowerusage[5]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
 
 with seventh_kpi:
-    number7 = [getrig.profitability[6], getrig.totalpowerusage[6]]
+    number7 = [round(getrig.profitability[6],4), getrig.totalpowerusage[6]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
 
 with eigth_kpi:
-    number8 = [getrig.profitability[7], getrig.totalpowerusage[7]]
+    number8 = [round(getrig.profitability[7],4), getrig.totalpowerusage[7]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
 with nineth_kpi:
-    number9 = [getrig.profitability[8], getrig.totalpowerusage[8]]
+    number9 = [round(getrig.profitability[8],4), getrig.totalpowerusage[8]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
