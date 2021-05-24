@@ -10,10 +10,10 @@ import pandas as pd
 import numpy as np
 import pickle
 
-totalvalue = pd.read_pickle("https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.pkl")
-workingcapital = pd.read_pickle("https://github.com/Mentalustig/Bitcoindashboard/blob/main/workingcapital.pkl")
-totalvalue = pd.read_pickle("https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.pkl")
-kpis = pd.read_pickle("https://github.com/Mentalustig/Bitcoindashboard/blob/main/kpis.pkl")
+totalvalue = pd.read_pickle('https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.pkl')
+workingcapital = pd.read_pickle('https://github.com/Mentalustig/Bitcoindashboard/blob/main/workingcapital.pkl')
+totalvalue = pd.read_pickle('https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.pkl')
+kpis = pd.read_pickle('https://github.com/Mentalustig/Bitcoindashboard/blob/main/kpis.pkl')
 
 
 
