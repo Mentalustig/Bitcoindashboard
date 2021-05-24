@@ -87,47 +87,47 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 
 with first_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
+    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
     number1 = [getrig.activeDevices[0], getrig.totalDevices[0]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
-    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]}**")
+    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
     number2 = [getrig.activeDevices[1], getrig.totalDevices[1]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
-    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]}**")
+    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]} active/totaldevices**")
     number3 = [getrig.activeDevices[2], getrig.totalDevices[2]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
-    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]}**")
+    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]} active/totaldevices**")
     number4 = [getrig.activeDevices[3], getrig.totalDevices[3]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]}**")
+    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]} active/totaldevices**")
     number5 = [getrig.activeDevices[4], getrig.totalDevices[4]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]}**")
+    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]} active/totaldevices**")
     number6 = [getrig.activeDevices[5], getrig.totalDevices[5]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
 
 with seventh_kpi:
-    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]}**")
+    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]} active/totaldevices**")
     number7 = [getrig.activeDevices[6], getrig.totalDevices[6]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
 
 with eigth_kpi:
-    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]}**")
+    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]} active/totaldevices**")
     number8 = [getrig.activeDevices[7], getrig.totalDevices[7]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
 with nineth_kpi:
-    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]}**")
+    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]} active/totaldevices**")
     number9 = [getrig.activeDevices[8], getrig.totalDevices[8]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
     
@@ -136,39 +136,48 @@ st.markdown("<hr/>", unsafe_allow_html=True)
 first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
 with first_kpi:
-    number1 = [round(getrig.profitability[0],4), getrig.totalpowerusage[0]]
+    st.markdown("**prof*1000 / powerusage**")
+    number1 = [round(1000*getrig.profitability[0],2), int(getrig.totalpowerusage[0])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
-    number2 = [round(getrig.profitability[1],4), getrig.totalpowerusage[1]]
+    st.markdown("**prof*1000 / powerusage**")
+    number2 = [round(1000*getrig.profitability[1],2), int(getrig.totalpowerusage[1])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
-    number3 = [round(getrig.profitability[2],4), getrig.totalpowerusage[2]]
+    st.markdown("**prof*1000 / powerusage**")
+    number3 = [round(1000*getrig.profitability[2],2), int(getrig.totalpowerusage[2])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
-    number4 = [round(getrig.profitability[3],4), getrig.totalpowerusage[3]]
+    st.markdown("**prof*1000 / powerusage**")
+    number4 = [round(1000*getrig.profitability[3],2), int(getrig.totalpowerusage[3])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    number5 = [round(getrig.profitability[4],4), getrig.totalpowerusage[4]]
+    st.markdown("**prof*1000 / powerusage**")
+    number5 = [round(1000*getrig.profitability[4],2), int(getrig.totalpowerusage[4])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    number6 = [round(getrig.profitability[5],4), getrig.totalpowerusage[5]]
+    st.markdown("**prof*1000 / powerusage**")
+    number6 = [round(1000*getrig.profitability[5],2), int(getrig.totalpowerusage[5])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
 
 with seventh_kpi:
-    number7 = [round(getrig.profitability[6],4), getrig.totalpowerusage[6]]
+    st.markdown("**prof*1000 / powerusage**")
+    number7 = [round(1000*getrig.profitability[6],2), int(getrig.totalpowerusage[6])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
 
 with eigth_kpi:
-    number8 = [round(getrig.profitability[7],4), getrig.totalpowerusage[7]]
+    st.markdown("**prof*1000 / powerusage**")
+    number8 = [round(1000*getrig.profitability[7],2), int(getrig.totalpowerusage[7])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
 with nineth_kpi:
-    number9 = [round(getrig.profitability[8],4), getrig.totalpowerusage[8]]
+    st.markdown("**prof*1000 / powerusage**")
+    number9 = [round(1000*getrig.profitability[8],2), int(getrig.totalpowerusage[8])]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
