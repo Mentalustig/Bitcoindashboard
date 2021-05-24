@@ -257,7 +257,7 @@ workingcapital['Amount BTC'][today] = float(totalbalance)
 kpis['Daily productivity'][today] = float(dailyprofitability)
 kpis['Average productivity'][today] = float(workingcapital['Amount BTC'][today]/int((today-startdate).days))
 
-cost_elec_per_rig_per_watt = 0.26
+cost_elec_per_rig_per_watt = 0.36
 workingcapital['Electricity Costs'][today] = cost_elec_per_rig_per_watt*totalpowerusage
 
 
