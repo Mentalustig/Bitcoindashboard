@@ -75,7 +75,7 @@ with sixth_kpi:
     
 with seventh_kpi:
     st.markdown("**Active Rigs**")
-    number7 = getrig[getrig.status == 'MINING'].sum() 
+    number7 = getrig[getrig.status == 'MINING'].count() 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
