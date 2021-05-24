@@ -88,8 +88,9 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 with first_kpi:
     st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
-    number1 = f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**"
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
+    number1 = getrig.activeDevices[0]
+    number11 = getrig.totalDevices[0]]
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}\n{number11}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
     st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
