@@ -25,10 +25,21 @@ delta2 = datetime.timedelta(days=2)
 
 # Read data
 
-staticcapital = pd.read_pickle("staticcapital.pkl")
-workingcapital = pd.read_pickle("workingcapital.pkl")
-totalvalue = pd.read_pickle("totalvalue.pkl")
-kpis = pd.read_pickle("kpis.pkl")
+staticcapital = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/main/staticcapital.csv')  
+staticcapital['Date'] = pd.to_datetime(staticcapital['Date'], format='%Y-%m-%d')
+staticcapital = staticcapital.set_index('Date')
+
+workingcapital = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/main/workingcapital.csv')  
+workingcapital['Date'] = pd.to_datetime(workingcapital['Date'], format='%Y-%m-%d')
+workingcapital = workingcapital.set_index('Date')
+
+totalvalue = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.csv')  
+totalvalue['Date'] = pd.to_datetime(totalvalue['Date'], format='%Y-%m-%d')
+totalvalue = totalvalue.set_index('Date')
+
+kpis = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/main/kpis.csv')
+kpis['Date'] = pd.to_datetime(kpis['Date'], format='%Y-%m-%d')
+kpis = kpis.set_index('Date')
 
 staticcapital.loc[today] = [0,0,0,0] if staticcapital.index[-1] != today else print('all good')
 workingcapital.loc[today] = [0,0,0,0,0,0,0] if workingcapital.index[-1] != today else print('all good')
@@ -327,14 +338,9 @@ totalvalue.iloc[-1, 7] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0]) * (365
 
 # Save data into new data sets
 
-staticcapital.to_pickle("staticcapital.pkl")  # saved old dataframes
-workingcapital.to_pickle("workingcapital.pkl")  # saved old dataframes
-totalvalue.to_pickle("totalvalue.pkl")  # saved old dataframes
-kpis.to_pickle("kpis.pkl")  # saved old dataframes
-
-staticcapital.to_csv("staticcapital.csv", index=True)
-workingcapital.to_csv("workingcapital.csv", index=True)
-totalvalue.to_csv("totalvalue.csv", index=True)
-kpis.to_csv("kpis.csv", index=True)
+staticcapital.to_csv("https://github.com/Mentalustig/Bitcoindashboard/blob/main/staticcapital.csv", index=True)
+workingcapital.to_csv("https://github.com/Mentalustig/Bitcoindashboard/blob/main/workingcapital.csv", index=True)
+totalvalue.to_csv("https://github.com/Mentalustig/Bitcoindashboard/blob/main/totalvalue.csv", index=True)
+kpis.to_csv("https://github.com/Mentalustig/Bitcoindashboard/blob/main/kpis.csv", index=True)
 
 
