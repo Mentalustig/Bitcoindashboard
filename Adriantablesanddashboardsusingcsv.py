@@ -103,7 +103,10 @@ for i in rigdata['rigId']:
     getrig.at[i, 'name'] = private_api.get_rig2(i)['name']
     getrig.at[i, 'profitability'] = private_api.get_rig2(i)['profitability']
 
-for i in rigdata['rigId']:
+
+rigdata = rigdata.set_index('rigId')
+
+for i in rigdata.index:
     for o in range(0, 6):
         basename = "powerusage"
         columnname = basename + "_" + str(o+1)
@@ -113,6 +116,8 @@ for i in rigdata['rigId']:
           #  getrig.at[i, columnname] = 'null'
             print('Oops, I did not find power usage for', i)
 
+
+
 dailyprofitability = getrig['profitability'].sum()
 
 powerlist= list(getrig)
@@ -121,6 +126,10 @@ powerlist.remove('profitability')
 
 getrig['totalpowerusage'] = getrig[powerlist].sum(axis=1)
 totalpowerusage = (getrig['totalpowerusage'].sum(axis=0)/1000)*24
+
+getrig = pd.concat([getrig, rigdata['status']], axis=1)
+getrig = pd.concat([getrig, rigdata['totalDevices']], axis=1)
+getrig = pd.concat([getrig, rigdata['activeDevices']], axis=1)
 
 
 
@@ -300,6 +309,7 @@ totalvalue.iloc[-1, 7] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0]) * (365
 
 # Save data into new data sets
 
+getrig.to_csv("getrig.csv", index=True)
 staticcapital.to_csv("staticcapital.csv", index=True)
 workingcapital.to_csv("workingcapital.csv", index=True)
 totalvalue.to_csv("totalvalue.csv", index=True)

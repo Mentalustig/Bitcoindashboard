@@ -26,6 +26,8 @@ kpis = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboa
 kpis['Date'] = pd.to_datetime(kpis['Date'], format='%Y-%m-%d')
 kpis = kpis.set_index('Date')
 
+getrig = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboard/main/getrig.csv')
+
 
 
 st.set_page_config(page_title = 'Streamlit Dashboard', layout='wide', page_icon='💹')
