@@ -75,7 +75,7 @@ with sixth_kpi:
     
 with seventh_kpi:
     st.markdown("**Active Rigs**")
-    number7 = getrig[getrig.status == 'MINING'].count() 
+    number7 = getrig.status[getrig.status == 'MINING'].count() 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
@@ -92,29 +92,45 @@ with first_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
-    number2 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]}**")
+    number2 = [getrig.activeDevices[1], getrig.totalDevices[1]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
-    number3 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]}**")
+    number3 = [getrig.activeDevices[2], getrig.totalDevices[2]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
-    number4 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]}**")
+    number4 = [getrig.activeDevices[3], getrig.totalDevices[3]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
-    number5 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]}**")
+    number5 = [getrig.activeDevices[4], getrig.totalDevices[4]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]}**")
-    number6 = [getrig.activeDevices[0], getrig.totalDevices[0]]
+    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]}**")
+    number6 = [getrig.activeDevices[5], getrig.totalDevices[5]]
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
+
+with seventh_kpi:
+    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]}**")
+    number7 = [getrig.activeDevices[6], getrig.totalDevices[6]]
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
+
+with eigth_kpi:
+    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]}**")
+    number8 = [getrig.activeDevices[7], getrig.totalDevices[7]]
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
+
+with nineth_kpi:
+    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]}**")
+    number9 = [getrig.activeDevices[8], getrig.totalDevices[8]]
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
+
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
