@@ -10,19 +10,19 @@ import numpy as np
 import pickle
 import altair as alt
 
-staticcapital = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/fc5be543625fab73b5d3854328f98a776765c3ce/staticcapital.csv')  
+staticcapital = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboard/main/staticcapital.csv')  
 staticcapital['Date'] = pd.to_datetime(staticcapital['Date'], format='%Y-%m-%d')
 staticcapital = staticcapital.set_index('Date')
 
-workingcapital = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/fc5be543625fab73b5d3854328f98a776765c3ce/workingcapital.csv')  
+workingcapital = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboard/main/workingcapital.csv')  
 workingcapital['Date'] = pd.to_datetime(workingcapital['Date'], format='%Y-%m-%d')
 workingcapital = workingcapital.set_index('Date')
 
-totalvalue = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/fc5be543625fab73b5d3854328f98a776765c3ce/totalvalue.csv')  
+totalvalue = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboard/main/totalvalue.csv')  
 totalvalue['Date'] = pd.to_datetime(totalvalue['Date'], format='%Y-%m-%d')
 totalvalue = totalvalue.set_index('Date')
 
-kpis = pd.read_csv('https://github.com/Mentalustig/Bitcoindashboard/blob/fc5be543625fab73b5d3854328f98a776765c3ce/kpis.csv')
+kpis = pd.read_csv('https://raw.githubusercontent.com/Mentalustig/Bitcoindashboard/main/kpis.csv')
 kpis['Date'] = pd.to_datetime(kpis['Date'], format='%Y-%m-%d')
 kpis = kpis.set_index('Date')
 
