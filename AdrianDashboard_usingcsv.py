@@ -79,13 +79,13 @@ with seventh_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
     
 with eigth_kpi:
-    st.markdown("**You will be Millionar in years (based on avg. gain)**")
-    number8 = int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365)
+    st.markdown("**You will be Millionar in (based on avg. gain)**")
+    number8 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
 with nineth_kpi:
-    st.markdown("**You will be Millionar in years (based on daily gain)**")
-    number9 = int(1000000/totalvalue.iloc[-1,3]/365)
+    st.markdown("**You will be Millionar in (based on daily gain)**")
+    number9 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
