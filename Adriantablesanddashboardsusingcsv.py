@@ -40,10 +40,25 @@ kpis = pd.read_csv('kpis.csv')
 kpis['Date'] = pd.to_datetime(kpis['Date'], format='%Y-%m-%d')
 kpis = kpis.set_index('Date')
 
-staticcapital.loc[today] = [0,0,0,0] if staticcapital.index[-1] != today else print('all good')
-workingcapital.loc[today] = [0,0,0,0,0,0,0] if workingcapital.index[-1] != today else print('all good')
-totalvalue.loc[today] = [0,0,0,0,0,0,0,0,0] if totalvalue.index[-1] != today else print('all good')
-kpis.loc[today] = [0,0,0] if kpis.index[-1] != today else print('all good')
+if staticcapital.index[-1] != today:
+    staticcapital.loc[today] = [0,0,0,0]
+else:
+    print('all good')
+
+if workingcapital.index[-1] != today:
+    workingcapital.loc[today] = [0,0,0,0,0,0,0]
+else:
+    print('all good')
+
+if totalvalue.index[-1] != today:
+    totalvalue.loc[today] = [0,0,0,0,0,0,0,0,0]
+else:
+    print('all good')
+
+if kpis.index[-1] != today:
+    kpis.loc[today] = [0,0,0]
+else:
+    print('all good')
 
 
 
