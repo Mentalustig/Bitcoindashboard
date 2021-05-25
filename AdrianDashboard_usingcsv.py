@@ -40,7 +40,7 @@ st.button('I am just a gimmick button but lucas did not program me yet')
 st.markdown("## Main KPIs")
 st.markdown(f"as of {totalvalue.index[-1]}")
 
-first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi = st.beta_columns(7)
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
 
 with first_kpi:
@@ -64,12 +64,12 @@ with fourth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    st.markdown("**Average productivity BTC p.d.**")
+    st.markdown("**Average prod. BTC p.d.**")
     number5 = round(kpis.iloc[-1,2],6)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown("**Daily productivity BTC p.d.**")
+    st.markdown("**Daily prod. BTC p.d.**")
     number6 = round(kpis.iloc[-1,1],6)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
     
@@ -77,6 +77,16 @@ with seventh_kpi:
     st.markdown("**Active Rigs**")
     number7 = getrig.status[getrig.status == 'MINING'].count() 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
+    
+with eigth_kpi:
+    st.markdown("**AED Millionair in days (avg. gain)**")
+    number8 = int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3])))
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
+
+with nineth_kpi:
+    st.markdown("**AED Millionair in days (daily. gain)**")
+    number9 = int(1000000/totalvalue.iloc[-1,3])
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
