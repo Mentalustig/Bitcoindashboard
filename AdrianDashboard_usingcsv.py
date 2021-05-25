@@ -45,17 +45,17 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 with first_kpi:
     st.markdown("**Total Gain in AED**")
-    number1 = round(totalvalue.iloc[-1,2],0)
+    number1 = int(totalvalue.iloc[-1,2])
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
     st.markdown("**Total Gain in %**")
-    number2 = round(totalvalue.iloc[-1,4],1)
+    number2 = int(totalvalue.iloc[-1,4])
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
     st.markdown("**Daily Gain in AED**")
-    number3 = round(totalvalue.iloc[-1,3],0)
+    number3 = int(totalvalue.iloc[-1,3])
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
@@ -64,12 +64,12 @@ with fourth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
-    st.markdown("**Average prod. BTC p.d.**")
+    st.markdown("**Average prod. BTC**")
     number5 = round(kpis.iloc[-1,2],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown("**Daily prod. BTC p.d.**")
+    st.markdown("**Daily prod. BTC**")
     number6 = round(kpis.iloc[-1,1],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
     
@@ -79,12 +79,12 @@ with seventh_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
     
 with eigth_kpi:
-    st.markdown("**You will be Millionar in (based on avg. gain)**")
+    st.markdown("**Mio in (avg. gain)**")
     number8 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
 with nineth_kpi:
-    st.markdown("**You will be Millionar in (based on daily gain)**")
+    st.markdown("**Mio in (daily gain)**")
     number9 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
