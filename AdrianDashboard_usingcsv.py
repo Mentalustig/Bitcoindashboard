@@ -144,7 +144,7 @@ st.bar_chart(getrig.totalpowerusage)
 
 
 
-st.markdown("## Total Gain and Total Value vs Invested")
+st.markdown("Total Gain and Total Value vs Invested")
 
 first_chart, second_chart = st.beta_columns(2)
 
@@ -168,7 +168,7 @@ first_chart, second_chart = st.beta_columns(2)
 
 with first_chart:
     chart_data = totalvalue[['% cummulating p.a.', '% average p.a.', '% cummulative p.a. using average productivity', '% cummulative p.a. using daily productivity']]
-    st.area_chart(chart_data)
+    st.line_chart(chart_data)
 
 
 with second_chart:
