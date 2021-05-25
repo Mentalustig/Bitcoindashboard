@@ -45,32 +45,32 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 with first_kpi:
     st.markdown("**Total Gain in AED**")
-    number1 = round(totalvalue.iloc[-1,2],3)
+    number1 = round(totalvalue.iloc[-1,2],0)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
     st.markdown("**Total Gain in %**")
-    number2 = round(totalvalue.iloc[-1,4],3)
+    number2 = round(totalvalue.iloc[-1,4],1)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:
     st.markdown("**Daily Gain in AED**")
-    number3 = round(totalvalue.iloc[-1,3],3)
+    number3 = round(totalvalue.iloc[-1,3],0)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
     
 with fourth_kpi:
     st.markdown("**Daily Gain in %**")
-    number4 = round(totalvalue.iloc[-1,5],3)
+    number4 = round(totalvalue.iloc[-1,5],2)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
 
 with fifth_kpi:
     st.markdown("**Average prod. BTC p.d.**")
-    number5 = round(kpis.iloc[-1,2],6)
+    number5 = round(kpis.iloc[-1,2],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
     st.markdown("**Daily prod. BTC p.d.**")
-    number6 = round(kpis.iloc[-1,1],6)
+    number6 = round(kpis.iloc[-1,1],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
     
 with seventh_kpi:
