@@ -306,6 +306,9 @@ totalvalue['%Daily Gain'] = (totalvalue['Total Daily Gain']/totalvalue['Total in
 totalvalue['%Total Gain'] = (totalvalue['Total Gain']/totalvalue['Total invested']) * 100
 totalvalue.iloc[-1, 6] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0] +1 ) ** (365/(today-startdate).days) -1) * 100
 totalvalue.iloc[-1, 7] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0]) * (365/(today-startdate).days)) * 100
+totalvalue.columns = [*totalvalue.columns[:-1], '% cummulative p.a. using average productivity']
+totalvalue['% cummulative p.a. using average productivity'] = ((((kpis['Average productivity']*workingcapital['Exchange Rate BTC/AED']-workingcapital['Electricity Costs'])*30)/totalvalue.iloc[:, 0] +1 ) ** (365/30) -1) * 100
+totalvalue['% cummulative p.a. using daily productivity'] = ((((kpis['Daily productivity']*workingcapital['Exchange Rate BTC/AED']-workingcapital['Electricity Costs'])*30)/totalvalue.iloc[:, 0] +1 ) ** (365/30) -1) * 100
 
 # Save data into new data sets
 

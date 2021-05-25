@@ -80,6 +80,174 @@ with seventh_kpi:
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
+#st.markdown("## Mining Rig KPIs Trial 2")
+
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
+
+
+with first_kpi:
+    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
+    chart_data = getrig.iloc[0,-2:]
+    st.bar_chart(chart_data)
+
+with second_kpi:
+    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
+    chart_data = getrig.iloc[1,-2:]
+    st.bar_chart(chart_data)
+
+with third_kpi:
+    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]} active/totaldevices**")
+    chart_data = getrig.iloc[2,-2:]
+    st.bar_chart(chart_data)
+    
+with fourth_kpi:
+    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]} active/totaldevices**")
+    chart_data = getrig.iloc[3,-2:]
+    st.bar_chart(chart_data)
+
+with fifth_kpi:
+    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]} active/totaldevices**")
+    chart_data = getrig.iloc[4,-2:]
+    st.bar_chart(chart_data)
+
+with sixth_kpi:
+    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]} active/totaldevices**")
+    chart_data = getrig.iloc[5,-2:]
+    st.bar_chart(chart_data)
+
+with seventh_kpi:
+    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]} active/totaldevices**")
+    chart_data = getrig.iloc[6,-2:]
+    st.bar_chart(chart_data)
+
+with eigth_kpi:
+    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]} active/totaldevices**")
+    chart_data = getrig.iloc[7,-2:]
+    st.bar_chart(chart_data)
+
+with nineth_kpi:
+    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]} active/totaldevices**")
+    chart_data = getrig.iloc[8,-2:]
+    st.bar_chart(chart_data)
+
+st.markdown("<hr/>", unsafe_allow_html=True)
+
+
+
+#st.markdown("## Mining Rig KPIs Trial 3")
+st.markdown("Profitability per rig")
+st.bar_chart(getrig.profitability)
+
+st.markdown("Total power usage per rig")
+st.bar_chart(getrig.totalpowerusage)
+
+
+
+
+st.markdown("## Total Gain and Total Value vs Invested")
+
+first_chart, second_chart = st.beta_columns(2)
+
+with first_chart:
+    chart_data = totalvalue['%Total Gain']
+    st.bar_chart(chart_data)
+
+     
+with second_chart:
+    df = totalvalue
+    df.reset_index(drop=True, inplace=True)
+    chart_data = df[['Total Value', 'Total invested']]
+    st.area_chart(chart_data)
+
+   
+st.markdown("<hr/>", unsafe_allow_html=True)
+st.markdown("forecast yearly return")
+
+ 
+first_chart, second_chart = st.beta_columns(2)
+
+with first_chart:
+    chart_data = totalvalue[['% cummulating p.a.', '% average p.a.', '% cummulative p.a. using average productivity', '% cummulative p.a. using daily productivity']]
+    st.area_chart(chart_data)
+
+
+with second_chart:
+    chart_data = workingcapital['Exchange Rate BTC/AED']
+    st.area_chart(chart_data)
+
+
+
+st.markdown("<hr/>", unsafe_allow_html=True)
+
+st.markdown("Total Value")
+st.dataframe(totalvalue)
+#st.table(totalvalue)
+
+st.markdown("workingc apital")
+st.dataframe(workingcapital)
+
+st.markdown("static capital")
+st.dataframe(staticcapital)
+
+st.markdown("rig data")
+st.dataframe(getrig)
+
+
+
+"""
+#Analysis
+"""
+# Sensitivity Analysis
+
+#sensitivityrates = np.array([0.05, 0.15, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 1.85, 1.95])
+dailyprofitability = kpis.iloc[-1,1]
+
+
+sensitivityrates = np.arange(0.2, 2, 0.2)
+sensitivityrates2 = np.arange(0.6, 1.5, 0.1)
+rateBTCAED = sensitivityrates * (workingcapital.iloc[-1, 0])
+rateprofitability = sensitivityrates * dailyprofitability
+
+parameters = []
+paras = []
+parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
+for i in rateBTCAED:
+    for o in rateprofitability:
+        parameters[o, i] = (((((i*o-workingcapital.iloc[-1,4])*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)
+        paras.append(((((i*o*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1))
+
+rateBTCAEDlist = 100 * np.repeat(sensitivityrates,len(sensitivityrates))
+rateprofitabilitylist = 100 * np.tile(sensitivityrates2,len(sensitivityrates2))
+heatmap = pd.DataFrame({'values': paras, 'exchange rate BTCAED %': rateBTCAEDlist, 'profitability rate %': rateprofitabilitylist})
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+pvt = pd.pivot_table(pd.DataFrame(heatmap),
+    values='values', index='exchange rate BTCAED %', columns='profitability rate %')
+ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 7}, vmax = 3, cmap="YlGnBu")
+
+st.write(ax)
+st.pyplot()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" 
+
+OLD UNUSED CODE
+
+
 
 st.markdown("## Mining Rig KPIs")
 
@@ -133,64 +301,6 @@ with nineth_kpi:
     
 st.markdown("<hr/>", unsafe_allow_html=True)
 
-st.markdown("## Mining Rig KPIs Trial 2")
-
-first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
-
-
-with first_kpi:
-    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} active/totaldevices**")
-    chart_data = getrig.iloc[0,-2:]
-    st.bar_chart(chart_data)
-
-with second_kpi:
-    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} active/totaldevices**")
-    chart_data = getrig.iloc[1,-2:]
-    st.bar_chart(chart_data)
-
-with third_kpi:
-    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]} active/totaldevices**")
-    chart_data = getrig.iloc[2,-2:]
-    st.bar_chart(chart_data)
-    
-with fourth_kpi:
-    st.markdown(f"**{getrig.name[3]} : {getrig.status[3]} active/totaldevices**")
-    chart_data = getrig.iloc[3,-2:]
-    st.bar_chart(chart_data)
-
-with fifth_kpi:
-    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]} active/totaldevices**")
-    chart_data = getrig.iloc[4,-2:]
-    st.bar_chart(chart_data)
-
-with sixth_kpi:
-    st.markdown(f"**{getrig.name[5]} : {getrig.status[5]} active/totaldevices**")
-    chart_data = getrig.iloc[5,-2:]
-    st.bar_chart(chart_data)
-
-with seventh_kpi:
-    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]} active/totaldevices**")
-    chart_data = getrig.iloc[6,-2:]
-    st.bar_chart(chart_data)
-
-with eigth_kpi:
-    st.markdown(f"**{getrig.name[7]} : {getrig.status[7]} active/totaldevices**")
-    chart_data = getrig.iloc[7,-2:]
-    st.bar_chart(chart_data)
-
-with nineth_kpi:
-    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]} active/totaldevices**")
-    chart_data = getrig.iloc[8,-2:]
-    st.bar_chart(chart_data)
-
-st.markdown("<hr/>", unsafe_allow_html=True)
-
-st.markdown("## Mining Rig KPIs Trial 3")
-st.markdown("Profitability per rig")
-st.bar_chart(getrig.profitability)
-
-st.markdown("Total power usage per rig")
-st.bar_chart(getrig.totalpowerusage)
 
 
 first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
@@ -243,77 +353,4 @@ with nineth_kpi:
 st.markdown("<hr/>", unsafe_allow_html=True)
 
 
-st.markdown("## Total Gain and Total Value vs Invested")
-
-first_chart, second_chart = st.beta_columns(2)
-
-with first_chart:
-    chart_data = totalvalue['%Total Gain']
-    st.bar_chart(chart_data)
-
-     
-with second_chart:
-    df = totalvalue
-    df.reset_index(drop=True, inplace=True)
-    chart_data = df[['Total Value', 'Total invested']]
-    st.area_chart(chart_data)
-
-    
-    
-
-st.markdown("<hr/>", unsafe_allow_html=True)
-
-
-st.markdown("forecast yearly return")
-
-st.line_chart(totalvalue[['% cummulating p.a.', '% average p.a.']])
-
-st.markdown("<hr/>", unsafe_allow_html=True)
-
-st.markdown("Total Value")
-st.dataframe(totalvalue)
-#st.table(totalvalue)
-
-st.markdown("workingc apital")
-st.dataframe(workingcapital)
-
-st.markdown("static capital")
-st.dataframe(staticcapital)
-
-
-
 """
-#Analysis
-"""
-# Sensitivity Analysis
-
-#sensitivityrates = np.array([0.05, 0.15, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 1.85, 1.95])
-dailyprofitability = kpis.iloc[-1,1]
-
-
-sensitivityrates = np.arange(0.2, 2, 0.2)
-sensitivityrates2 = np.arange(0.6, 1.5, 0.1)
-rateBTCAED = sensitivityrates * (workingcapital.iloc[-1, 0])
-rateprofitability = sensitivityrates * dailyprofitability
-
-parameters = []
-paras = []
-parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
-for i in rateBTCAED:
-    for o in rateprofitability:
-        parameters[o, i] = (((((i*o-workingcapital.iloc[-1,4])*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)
-        paras.append(((((i*o*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1))
-
-rateBTCAEDlist = 100 * np.repeat(sensitivityrates,len(sensitivityrates))
-rateprofitabilitylist = 100 * np.tile(sensitivityrates2,len(sensitivityrates2))
-heatmap = pd.DataFrame({'values': paras, 'exchange rate BTCAED %': rateBTCAEDlist, 'profitability rate %': rateprofitabilitylist})
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-pvt = pd.pivot_table(pd.DataFrame(heatmap),
-    values='values', index='exchange rate BTCAED %', columns='profitability rate %')
-ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 7}, vmax = 3, cmap="YlGnBu")
-
-st.write(ax)
-st.pyplot()
