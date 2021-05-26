@@ -1,5 +1,4 @@
-SHELL= usr/bin/bash/env python3
-PATH = /Users/lpeikert/opt/anaconda3/bin/python3
+PATH = /Users/lpeikert/Documents/GitHub/Bitcoindashboard/
 cd /Users/lpeikert/Documents/GitHub/Bitcoindashboard/ && /Users/lpeikert/opt/anaconda3/bin/python3 /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.py >> /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.log
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard add .
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard commit -m "another commit"
