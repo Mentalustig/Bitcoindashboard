@@ -179,6 +179,7 @@ workingcapital['Amount BTC'] = pd.to_numeric(workingcapital['Amount BTC'], downc
 totalvalue["% average p.a."] = pd.to_numeric(totalvalue["% average p.a."], downcast="float")
 totalvalue["% cummulating p.a."] = pd.to_numeric(totalvalue["% cummulating p.a."], downcast="float")
 
+staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
 
 """
 NOT NEEDED ANYMORE
