@@ -45,12 +45,12 @@ first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi,
 
 with first_kpi:
     st.markdown("**Total Gain in AED**")
-    number1 = round(totalvalue.iloc[-1,2],1)
+    number1 = int(totalvalue.iloc[-1,2])
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
 
 with second_kpi:
     st.markdown("**Total Gain in %**")
-    number2 = int(totalvalue.iloc[-1,4])
+    number2 = round((totalvalue.iloc[-1,4]),1)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
 
 with third_kpi:

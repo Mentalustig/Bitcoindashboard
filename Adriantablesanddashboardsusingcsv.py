@@ -178,6 +178,7 @@ staticcapital["Total Value Rigs"] = pd.to_numeric(staticcapital["Total Value Rig
 workingcapital['Amount BTC'] = pd.to_numeric(workingcapital['Amount BTC'], downcast="float")
 totalvalue["% average p.a."] = pd.to_numeric(totalvalue["% average p.a."], downcast="float")
 totalvalue["% cummulating p.a."] = pd.to_numeric(totalvalue["% cummulating p.a."], downcast="float")
+totalvalue["%Total Gain"] = pd.to_numeric(totalvalue["%Total Gain"], downcast="float")
 
 #what did I invest
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
