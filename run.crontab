@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-/Users/lpeikert/opt/anaconda3/bin/python3 cd /Users/lpeikert/Documents/GitHub/Bitcoindashboard/ /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.py >> /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.log
+/Users/lpeikert/opt/anaconda3/bin/python3; cd /Users/lpeikert/Documents/GitHub/Bitcoindashboard/ /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.py >> /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.log
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard add .
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard commit -m "another commit"
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard push origin main
