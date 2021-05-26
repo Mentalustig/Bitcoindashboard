@@ -179,7 +179,9 @@ workingcapital['Amount BTC'] = pd.to_numeric(workingcapital['Amount BTC'], downc
 totalvalue["% average p.a."] = pd.to_numeric(totalvalue["% average p.a."], downcast="float")
 totalvalue["% cummulating p.a."] = pd.to_numeric(totalvalue["% cummulating p.a."], downcast="float")
 
+#what did I invest
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
+
 
 """
 NOT NEEDED ANYMORE
@@ -187,6 +189,8 @@ NOT NEEDED ANYMORE
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 15)] = 10000
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 20)] = 30000
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 22)] = 70000
+staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
+
 for i in range (0, int(((today-startdate).days)+2)):
     try:
         workingcapital.iloc[i, 5] = workingcapital.iloc[:i+1, 4].sum()
@@ -242,6 +246,7 @@ df_yahoo_BTCUSD = df_yahoo_BTCUSD['Adj Close']
 
 df_yahoo_USDAED = yf.download('AED=X', start=startdate, progress='False')
 df_yahoo_USDAED = df_yahoo_USDAED['Adj Close']
+
 
 
 workingcapital['Exchange Rate BTC/USD'][today] = df_yahoo_BTCUSD.iloc[-1]
