@@ -40,6 +40,7 @@ st.button('I am just a gimmick button but lucas did not program me yet')
 st.markdown("## Main KPIs")
 st.markdown(f"as of {totalvalue.index[-1]}")
 
+
 first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
 
@@ -75,7 +76,7 @@ with sixth_kpi:
     
 with seventh_kpi:
     st.markdown("**Active Rigs**")
-    number7 = getrig.status[getrig.status == 'MINING'].count() 
+    number7 = str(getrig.status[getrig.status == 'MINING'].count())+'  / '+str(getrig.status.count()) 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
     
 with eigth_kpi:
@@ -90,55 +91,22 @@ with nineth_kpi:
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
+namesactiverigs = ':'
+namesinactiverigs = ':'
 #st.markdown("## Mining Rig KPIs Trial 2")
+for i in (range(0,getrig.status.count())):
+    if getrig.status[i]=='MINING':
+        namesactiverigs += ' '+str(getrig.name.iloc[i])
+    else:
+        namesinactiverigs += ' '+str(getrig.name.iloc[i])
+        
 
-first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi = st.beta_columns(7)
+st.markdown(f"Running :white_check_mark: {namesactiverigs} and  :red_circle: **OFFLINE :x: {namesinactiverigs}**")
 
+st.markdown("<hr/>", unsafe_allow_html=True)
 
-with first_kpi:
-    st.markdown(f"**{getrig.name[0]} : :white_check_mark: :heavy_check_mark: {getrig.status[0]} {getrig.name[1]} : {getrig.status[1]}**")
-    chart_data = getrig.iloc[0,-2:]
-    st.bar_chart(chart_data)
-
-with second_kpi:
-    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} {getrig.name[1]} : {getrig.status[1]}**")
-    chart_data = getrig.iloc[1,-2:]
-    st.bar_chart(chart_data)
-
-with third_kpi:
-    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]}        {getrig.name[3]} : {getrig.status[3]}**")
-    chart_data = getrig.iloc[2,-2:]
-    st.bar_chart(chart_data)
-    
-with fourth_kpi:
-    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]}        {getrig.name[5]} : {getrig.status[5]}**")
-    chart_data = getrig.iloc[3,-2:]
-    st.bar_chart(chart_data)
-
-with fifth_kpi:
-    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]}        {getrig.name[7]} : {getrig.status[7]}**")
-    chart_data = getrig.iloc[4,-2:]
-    st.bar_chart(chart_data)
-
-with sixth_kpi:
-    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]}        {getrig.name[9]} : {getrig.status[9]}**")
-    chart_data = getrig.iloc[5,-2:]
-    st.bar_chart(chart_data)
-
-with seventh_kpi:
-    st.markdown(f"**{getrig.name[10]} : {getrig.status[10]}        {getrig.name[1]} : {getrig.status[1]}**")
-    chart_data = getrig.iloc[6,-2:]
-    st.bar_chart(chart_data)
-
-#with eigth_kpi:
- #   st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} {getrig.name[0]} : {getrig.status[0]}**")
-  #  chart_data = getrig.iloc[7,-2:]
-   # st.bar_chart(chart_data)
-
-#with nineth_kpi:
- #   st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} {getrig.name[0]} : {getrig.status[0]}**")
-  #  chart_data = getrig.iloc[8,-2:]
-   # st.bar_chart(chart_data)
+st.markdown("Active vs. Total Devices")
+st.area_chart(getrig.iloc[:,-2:])
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
@@ -257,7 +225,43 @@ st.pyplot()
 
 OLD UNUSED CODE
 
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi = st.beta_columns(7)
 
+
+with first_kpi:
+    st.markdown(f"**{getrig.name[0]} : {getrig.status[0]} {getrig.name[1]} : {getrig.status[1]}**")
+    chart_data = getrig.iloc[0,-2:]
+    st.bar_chart(chart_data)
+
+with second_kpi:
+    st.markdown(f"**{getrig.name[1]} : {getrig.status[1]} {getrig.name[1]} : {getrig.status[1]}**")
+    chart_data = getrig.iloc[1,-2:]
+    st.bar_chart(chart_data)
+
+with third_kpi:
+    st.markdown(f"**{getrig.name[2]} : {getrig.status[2]}        {getrig.name[3]} : {getrig.status[3]}**")
+    chart_data = getrig.iloc[2,-2:]
+    st.bar_chart(chart_data)
+    
+with fourth_kpi:
+    st.markdown(f"**{getrig.name[4]} : {getrig.status[4]}        {getrig.name[5]} : {getrig.status[5]}**")
+    chart_data = getrig.iloc[3,-2:]
+    st.bar_chart(chart_data)
+
+with fifth_kpi:
+    st.markdown(f"**{getrig.name[6]} : {getrig.status[6]}        {getrig.name[7]} : {getrig.status[7]}**")
+    chart_data = getrig.iloc[4,-2:]
+    st.bar_chart(chart_data)
+
+with sixth_kpi:
+    st.markdown(f"**{getrig.name[8]} : {getrig.status[8]}        {getrig.name[9]} : {getrig.status[9]}**")
+    chart_data = getrig.iloc[5,-2:]
+    st.bar_chart(chart_data)
+
+with seventh_kpi:
+    st.markdown(f"**{getrig.name[10]} : {getrig.status[10]}        {getrig.name[1]} : {getrig.status[1]}**")
+    chart_data = getrig.iloc[6,-2:]
+    st.bar_chart(chart_data)
 
 st.markdown("## Mining Rig KPIs")
 
