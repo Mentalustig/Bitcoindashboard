@@ -1,4 +1,4 @@
-cd /Users/lpeikert/Documents/GitHub/Bitcoindashboard/ && sudo python /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.py >> /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.log
+cd /Users/lpeikert/Documents/GitHub/Bitcoindashboard/ && python /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.py >> /Users/lpeikert/Documents/GitHub/Bitcoindashboard/Adriantablesanddashboardsusingcsv.log
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard add .
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard commit -m "another commit"
 git -C /Users/lpeikert/Documents/GitHub/Bitcoindashboard push origin main
