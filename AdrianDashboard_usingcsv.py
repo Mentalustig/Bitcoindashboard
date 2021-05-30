@@ -70,29 +70,24 @@ with fifth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown("**Daily prod. BTC**")
-    number6 = round(kpis.iloc[-1,1],4)
+    st.markdown("**Daily prod. BTC vs actual**")
+    number6 = str(round(kpis.iloc[-1,1],4))+'vs'+str(round(workingcapital.iloc[-1,7],4))
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
-
+    
 with seventh_kpi:
-    st.markdown("**Daily BTC**")
-    number7 = round(workingcapital.iloc[-1,7],4)
+    st.markdown("**Active Rigs**")
+    number7 = str(getrig.status[getrig.status == 'MINING'].count())+'  / '+str(getrig.status.count()) 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
     
 with eigth_kpi:
-    st.markdown("**Active Rigs**")
-    number8 = str(getrig.status[getrig.status == 'MINING'].count())+'  / '+str(getrig.status.count()) 
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
-    
-with nineth_kpi:
     st.markdown("**Mio in (avg. gain)**")
-    number9 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
+    number8 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
 
-with tenth_kpi:
+with nineth_kpi:
     st.markdown("**Mio in (daily gain)**")
-    number10 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number10}</h1>", unsafe_allow_html=True)
+    number9 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
