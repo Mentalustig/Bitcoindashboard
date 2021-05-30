@@ -41,7 +41,7 @@ st.markdown("## Main KPIs")
 st.markdown(f"as of {totalvalue.index[-1]}")
 
 
-first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi, tenth_kpi = st.beta_columns(10)
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
 
 
 with first_kpi:
