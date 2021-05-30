@@ -121,9 +121,9 @@ with first_chart:
     chart_data = getrig.iloc[:,-2:]
     st.area_chart(chart_data)
 
-with first_chart:
+with second_chart:
     chart_data = workingcapital['Daily BTC']
-    st.bar_chart(chart_data)
+    st.area_chart(chart_data)
 
 
 st.markdown("<hr/>", unsafe_allow_html=True)
