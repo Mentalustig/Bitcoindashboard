@@ -91,6 +91,33 @@ with nineth_kpi:
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
+
+first_kpi, second_kpi, third_kpi, fourth_kpi = st.beta_columns(4)
+
+
+with first_kpi:
+    st.markdown("**Daily BTC**")
+    number1 = int(workingcapital.iloc[-1,7])
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
+
+with second_kpi:
+    st.markdown("**Total Gain in %**")
+    number2 = round((totalvalue.iloc[-1,4]),1)
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
+
+with third_kpi:
+    st.markdown("**Daily Gain in AED**")
+    number3 = int(totalvalue.iloc[-1,3])
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
+    
+with fourth_kpi:
+    st.markdown("**Daily Gain in %**")
+    number4 = round(totalvalue.iloc[-1,5],2)
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
+    
+st.markdown("<hr/>", unsafe_allow_html=True)
+
+
 namesactiverigs = ':'
 namesinactiverigs = ':'
 #st.markdown("## Mining Rig KPIs Trial 2")
@@ -127,7 +154,7 @@ st.markdown("Total Gain and Total Value vs Invested")
 first_chart, second_chart = st.beta_columns(2)
 
 with first_chart:
-    chart_data = totalvalue[['Total Gain', 'Total Daily Gain']]
+    chart_data = [totalvalue[['Total Gain', 'Total Daily Gain']],workingcapital['Daily BTC']]
     st.line_chart(chart_data)
 
      

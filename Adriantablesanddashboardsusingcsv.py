@@ -281,6 +281,8 @@ cost_elec_per_rig_per_watt = 0.36
 workingcapital['Electricity Costs'][today] = cost_elec_per_rig_per_watt*totalpowerusage
 
 
+
+    
 try:
     workingcapital.iloc[-1, 5] = workingcapital.iloc[:, 4].sum()
 except IndexError:
@@ -313,6 +315,7 @@ except IndexError:
     
 totalvalue['Total Gain'] = totalvalue['Total Value'] - totalvalue['Total invested']
 totalvalue['Total Daily Gain'] = totalvalue['Total Gain'] - totalvalue['Total Gain'].shift(1)
+workingcapital['Daily BTC'] = workingcapital['Amount BTC'] - workingcapital['Amount BTC'].shift(1)
 totalvalue['%Daily Gain'] = (totalvalue['Total Daily Gain']/totalvalue['Total invested']) * 100
 totalvalue['%Total Gain'] = (totalvalue['Total Gain']/totalvalue['Total invested']) * 100
 totalvalue.iloc[-1, 6] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0] +1 ) ** (365/(today-startdate).days) -1) * 100
