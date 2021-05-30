@@ -70,7 +70,7 @@ with fifth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number5}</h1>", unsafe_allow_html=True)
 
 with sixth_kpi:
-    st.markdown("**Daily prod. BTC vs actual**")
+    st.markdown("**Daily prod vs act**")
     number6 = str(round(kpis.iloc[-1,1],4))+' vs '+str(round(workingcapital.iloc[-1,7],4))
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
     
