@@ -91,7 +91,7 @@ with nineth_kpi:
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
-
+"""
 first_kpi, second_kpi, third_kpi, fourth_kpi = st.beta_columns(4)
 
 
@@ -116,7 +116,7 @@ with fourth_kpi:
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
     
 st.markdown("<hr/>", unsafe_allow_html=True)
-
+"""
 
 namesactiverigs = ':'
 namesinactiverigs = ':'
@@ -154,7 +154,7 @@ st.markdown("Total Gain and Total Value vs Invested")
 first_chart, second_chart = st.beta_columns(2)
 
 with first_chart:
-    chart_data = [totalvalue[['Total Gain', 'Total Daily Gain']],workingcapital['Daily BTC']]
+    chart_data = totalvalue[['Total Gain', 'Total Daily Gain']]
     st.line_chart(chart_data)
 
      
