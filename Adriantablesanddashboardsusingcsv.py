@@ -179,6 +179,8 @@ workingcapital['Amount BTC'] = pd.to_numeric(workingcapital['Amount BTC'], downc
 totalvalue["% average p.a."] = pd.to_numeric(totalvalue["% average p.a."], downcast="float")
 totalvalue["% cummulating p.a."] = pd.to_numeric(totalvalue["% cummulating p.a."], downcast="float")
 totalvalue["%Total Gain"] = pd.to_numeric(totalvalue["%Total Gain"], downcast="float")
+workingcapital['Daily BTC'] = pd.to_numeric(workingcapital['Daily BTC'], downcast="float")
+
 
 #what did I invest
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
@@ -315,7 +317,6 @@ except IndexError:
     
 totalvalue['Total Gain'] = totalvalue['Total Value'] - totalvalue['Total invested']
 totalvalue['Total Daily Gain'] = totalvalue['Total Gain'] - totalvalue['Total Gain'].shift(1)
-workingcapital['Daily BTC'] = workingcapital['Amount BTC'] - workingcapital['Amount BTC'].shift(1)
 totalvalue['%Daily Gain'] = (totalvalue['Total Daily Gain']/totalvalue['Total invested']) * 100
 totalvalue['%Total Gain'] = (totalvalue['Total Gain']/totalvalue['Total invested']) * 100
 totalvalue.iloc[-1, 6] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0] +1 ) ** (365/(today-startdate).days) -1) * 100
@@ -323,6 +324,9 @@ totalvalue.iloc[-1, 7] = ((totalvalue.iloc[-1, 2]/totalvalue.iloc[-1, 0]) * (365
 
 totalvalue['% cummulative p.a. using average productivity'] = ((((kpis['Average productivity']*workingcapital['Exchange Rate BTC/AED']-staticcapital['Depreciation Rigs']-workingcapital['Electricity Costs'])*30)/totalvalue.iloc[:, 0] +1 ) ** (365/30) -1) * 100
 totalvalue['% cummulative p.a. using daily productivity'] = ((((kpis['Daily productivity']*workingcapital['Exchange Rate BTC/AED']-staticcapital['Depreciation Rigs']-workingcapital['Electricity Costs'])*30)/totalvalue.iloc[:, 0] +1 ) ** (365/30) -1) * 100
+
+workingcapital['Daily BTC'] = workingcapital['Amount BTC'] - workingcapital['Amount BTC'].shift(1)
+
 
 # Save data into new data sets
 

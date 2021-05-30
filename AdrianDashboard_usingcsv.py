@@ -41,7 +41,7 @@ st.markdown("## Main KPIs")
 st.markdown(f"as of {totalvalue.index[-1]}")
 
 
-first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi = st.beta_columns(9)
+first_kpi, second_kpi, third_kpi, fourth_kpi, fifth_kpi, sixth_kpi, seventh_kpi, eigth_kpi, nineth_kpi, tenth_kpi = st.beta_columns(10)
 
 
 with first_kpi:
@@ -73,50 +73,31 @@ with sixth_kpi:
     st.markdown("**Daily prod. BTC**")
     number6 = round(kpis.iloc[-1,1],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
-    
+
 with seventh_kpi:
-    st.markdown("**Active Rigs**")
-    number7 = str(getrig.status[getrig.status == 'MINING'].count())+'  / '+str(getrig.status.count()) 
+    st.markdown("**Daily BTC**")
+    number7 = round(workingcapital.iloc[-1,7],4)
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number7}</h1>", unsafe_allow_html=True)
     
 with eigth_kpi:
-    st.markdown("**Mio in (avg. gain)**")
-    number8 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
+    st.markdown("**Active Rigs**")
+    number8 = str(getrig.status[getrig.status == 'MINING'].count())+'  / '+str(getrig.status.count()) 
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number8}</h1>", unsafe_allow_html=True)
-
+    
 with nineth_kpi:
-    st.markdown("**Mio in (daily gain)**")
-    number9 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
+    st.markdown("**Mio in (avg. gain)**")
+    number9 = str(int(1000000/(totalvalue.iloc[-1,2]/len(totalvalue.iloc[:,3]))/365))+' years'
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number9}</h1>", unsafe_allow_html=True)
 
+with tenth_kpi:
+    st.markdown("**Mio in (daily gain)**")
+    number10 = str(int(1000000/totalvalue.iloc[-1,3]/365))+' years'
+    st.markdown(f"<h1 style='text-align: left; color: red;'>{number10}</h1>", unsafe_allow_html=True)
+
 st.markdown("<hr/>", unsafe_allow_html=True)
 
-"""
-first_kpi, second_kpi, third_kpi, fourth_kpi = st.beta_columns(4)
 
 
-with first_kpi:
-    st.markdown("**Daily BTC**")
-    number1 = int(workingcapital.iloc[-1,7])
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number1}</h1>", unsafe_allow_html=True)
-
-with second_kpi:
-    st.markdown("**Total Gain in %**")
-    number2 = round((totalvalue.iloc[-1,4]),1)
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number2}</h1>", unsafe_allow_html=True)
-
-with third_kpi:
-    st.markdown("**Daily Gain in AED**")
-    number3 = int(totalvalue.iloc[-1,3])
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number3}</h1>", unsafe_allow_html=True)
-    
-with fourth_kpi:
-    st.markdown("**Daily Gain in %**")
-    number4 = round(totalvalue.iloc[-1,5],2)
-    st.markdown(f"<h1 style='text-align: left; color: red;'>{number4}</h1>", unsafe_allow_html=True)
-    
-st.markdown("<hr/>", unsafe_allow_html=True)
-"""
 
 namesactiverigs = ':'
 namesinactiverigs = ':'
@@ -132,8 +113,18 @@ st.markdown(f"Running :white_check_mark: {namesactiverigs} and  :red_circle: **O
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
-st.markdown("Active vs. Total Devices")
-st.area_chart(getrig.iloc[:,-2:])
+st.markdown("Active vs. Total Devices and Daily BTC")
+
+first_chart, second_chart = st.beta_columns(2)
+
+with first_chart:
+    chart_data = getrig.iloc[:,-2:]
+    st.area_chart(chart_data)
+
+with first_chart:
+    chart_data = workingcapital['Daily BTC']
+    st.bar_chart(chart_data)
+
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
