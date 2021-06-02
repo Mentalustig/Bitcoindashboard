@@ -71,7 +71,7 @@ with fifth_kpi:
 
 with sixth_kpi:
     st.markdown("**Daily prod vs act**")
-    number6 = str(round(kpis.iloc[-1,1],4))+' vs '+str(round(workingcapital.iloc[-1,7],4))
+    number6 = str(round(kpis.iloc[-1,1],4))+' vs '+str(round(kpis.iloc[-1,4],4))
     st.markdown(f"<h1 style='text-align: left; color: red;'>{number6}</h1>", unsafe_allow_html=True)
     
 with seventh_kpi:
@@ -117,7 +117,7 @@ with first_chart:
     st.area_chart(chart_data)
 
 with second_chart:
-    chart_data = workingcapital['Daily BTC']
+    chart_data = kpis[['Daily BTC', 'Daily productivity', 'Average productivity']]
     st.area_chart(chart_data)
 
 
