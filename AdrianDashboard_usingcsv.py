@@ -118,7 +118,7 @@ with first_chart:
 
 with second_chart:
     chart_data = kpis[['Daily BTC', 'Daily productivity', 'Average productivity']]
-    st.area_chart(chart_data)
+    st.line_chart(chart_data)
 
 
 st.markdown("<hr/>", unsafe_allow_html=True)
