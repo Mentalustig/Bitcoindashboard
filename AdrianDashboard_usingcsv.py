@@ -218,9 +218,9 @@ pvt = pd.pivot_table(pd.DataFrame(heatmap),
     values='values', index='exchange rate BTCAED %', columns='profitability rate %')
 ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 7}, vmax = 3, cmap="YlGnBu")
 
-st.write(ax)
-st.pyplot()
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
+st.pyplot(st.write(ax))
 
 
 
