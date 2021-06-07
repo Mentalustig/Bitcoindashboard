@@ -104,7 +104,7 @@ for i in (range(0,getrig.status.count())):
         namesinactiverigs += ' '+str(getrig.name.iloc[i])
         
 
-st.markdown(f"Running :white_check_mark: {namesactiverigs} and  :red_circle: **OFFLINE :x: {namesinactiverigs}**")
+st.markdown(f"Running :white_check_mark: {namesactiverigs} and \n\n :red_circle: **OFFLINE{namesinactiverigs}**")
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
@@ -189,23 +189,25 @@ st.dataframe(getrig)
 #Analysis
 """
 # Sensitivity Analysis
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #sensitivityrates = np.array([0.05, 0.15, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 1.85, 1.95])
 dailyprofitability = kpis.iloc[-1,1]
 
+st.markdown("## Sensitivity Analysis using daily profitability x BTC price in AED")
 
 sensitivityrates = np.arange(0.2, 2, 0.2)
 sensitivityrates2 = np.arange(0.6, 1.5, 0.1)
 rateBTCAED = sensitivityrates * (workingcapital.iloc[-1, 0])
-rateprofitability = sensitivityrates * dailyprofitability
+rateprofitability = sensitivityrates2 * dailyprofitability
 
 parameters = []
 paras = []
 parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
 for i in rateBTCAED:
     for o in rateprofitability:
-        parameters[o, i] = (((((i*o-workingcapital.iloc[-1,4])*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)
-        paras.append(((((i*o*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1))
+        parameters[o, i] = int((((((i*o-workingcapital.iloc[-1,4])*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)*100)
+        paras.append(int(((((i*o*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)*100))
 
 rateBTCAEDlist = 100 * np.repeat(sensitivityrates,len(sensitivityrates))
 rateprofitabilitylist = 100 * np.tile(sensitivityrates2,len(sensitivityrates2))
@@ -216,16 +218,36 @@ import matplotlib.pyplot as plt
 
 pvt = pd.pivot_table(pd.DataFrame(heatmap),
     values='values', index='exchange rate BTCAED %', columns='profitability rate %')
-ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 7}, vmax = 3, cmap="YlGnBu")
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
+ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 6}, fmt='g', vmax = 300, cmap="YlGnBu")
 
 st.pyplot(st.write(ax))
 
 
+st.markdown("## Sensitivity Analysis using daily profitability x reinvestment rate")
+            
 
+sensitivityrates = np.arange(30, 360, 30)
+sensitivityrates2 = np.arange(0.6, 1.7, 0.1)
+reinvestmentrate = sensitivityrates
+rateprofitability = sensitivityrates2 * dailyprofitability
 
+parameters = []
+paras = []
+parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
+for i in reinvestmentrate:
+    for o in rateprofitability:
+        parameters[o, i] = int(((((((workingcapital.iloc[-1, 0])*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(365/i)-1)*100)
+        paras.append(int(((((((workingcapital.iloc[-1, 0])*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(365/i)-1)*100))
 
+reinvestmentratelist = np.repeat(sensitivityrates,len(sensitivityrates))
+rateprofitabilitylist = 100 * np.tile(sensitivityrates2,len(sensitivityrates2))
+heatmap = pd.DataFrame({'values': paras, 'Reinvestment after every X Days': reinvestmentratelist, 'profitability rate %': rateprofitabilitylist})
+
+pvt = pd.pivot_table(pd.DataFrame(heatmap),
+    values='values', index='Reinvestment after every X Days', columns='profitability rate %')
+ax2 = sns.heatmap(pvt, annot=True, annot_kws={"size": 6}, fmt='.2f', vmax = 200, cmap="YlGnBu")
+
+st.pyplot(st.write(ax2))
 
 
 
