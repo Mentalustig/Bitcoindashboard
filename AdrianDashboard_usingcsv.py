@@ -212,8 +212,8 @@ with first_chart:
     parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
     for i in rateBTCAED:
         for o in rateprofitability:
-            parameters[o, i] = int((((((i*o-workingcapital.iloc[-1,4])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100)
-            paras.append(int((((((i*o-workingcapital.iloc[-1,4])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100))
+            parameters[o, i] = int((((((i*o-workingcapital.iloc[-1,4]+staticcapital.iloc[-1,2])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100)
+            paras.append(int((((((i*o-workingcapital.iloc[-1,4]+staticcapital.iloc[-1,2])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100))
 
     rateBTCAEDlist = 100 * np.repeat(sensitivityrates,len(sensitivityrates))
     rateBTCAEDlist = [int(i) for i in rateBTCAEDlist]
@@ -237,8 +237,8 @@ with second_chart:
     parameters2 = pd.DataFrame(parameters2, columns = reinvestmentrate, index = rateprofitability)
     for i in reinvestmentrate:
         for o in rateprofitability:
-            parameters2[o, i] = int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100)
-            paras2.append(int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100))
+            parameters2[o, i] = int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4]+staticcapital.iloc[-1,2])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100)
+            paras2.append(int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4]+staticcapital.iloc[-1,2])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100))
     
     reinvestmentratelist = np.repeat(sensitivityrates,len(sensitivityrates))
     reinvestmentratelist = [int(i) for i in reinvestmentratelist]
@@ -249,7 +249,7 @@ with second_chart:
         values='values', index='Reinvestment after every X Days', columns='profitability rate %')
     ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 6}, fmt='g', vmax = 200, cmap="YlGnBu")
     
-    st.pyplot(st.write(ax))
+    st.pyplot(st.write(ax.invert_yaxis()))
 
 st.markdown(f"with rate_BTCAED= {workingcapital.iloc[-1, 0]} and dailyprofitability= {kpis.iloc[-1,1]}")
 
