@@ -198,13 +198,12 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 dailyprofitability = kpis.iloc[-1,1]
 
 
-
 first_chart, second_chart = st.beta_columns(2)
 
 with first_chart:
-    st.markdown("### Sensitivity Analysis using daily profitability x BTC price in AED")
-    sensitivityrates = np.arange(0.2, 2, 0.2)
-    sensitivityrates2 = np.arange(0.6, 1.5, 0.1)
+    st.markdown("### Sensitivity Analysis using daily profitability x BTC price in AED ")
+    sensitivityrates = np.arange(0, 2.2, 0.2)
+    sensitivityrates2 = np.arange(0.6, 1.7, 0.1)
     rateBTCAED = sensitivityrates * (workingcapital.iloc[-1, 0])
     rateprofitability = sensitivityrates2 * dailyprofitability
 
@@ -213,8 +212,8 @@ with first_chart:
     parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
     for i in rateBTCAED:
         for o in rateprofitability:
-            parameters[o, i] = int((((((i*o-workingcapital.iloc[-1,4])*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)*100)
-            paras.append(int(((((i*o*30)/totalvalue.iloc[-1,0])+1)**(365/30)-1)*100))
+            parameters[o, i] = int((((((i*o-workingcapital.iloc[-1,4])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100)
+            paras.append(int((((((i*o-workingcapital.iloc[-1,4])*90)/totalvalue.iloc[-1,0])+1)**(360/90)-1)*100))
 
     rateBTCAEDlist = 100 * np.repeat(sensitivityrates,len(sensitivityrates))
     rateBTCAEDlist = [int(i) for i in rateBTCAEDlist]
@@ -230,32 +229,29 @@ with first_chart:
      
 with second_chart:
     st.markdown("### Sensitivity Analysis using daily profitability x reinvestment rate")     
-    sensitivityrates = np.arange(30, 300, 30)
-    sensitivityrates2 = np.arange(0.6, 1.5, 0.1)
+    sensitivityrates = np.arange(30, 360, 30)
     reinvestmentrate = sensitivityrates
-    rateprofitability = sensitivityrates2 * dailyprofitability
     
-    parameters = []
-    paras = []
-    parameters = pd.DataFrame(parameters, columns = rateBTCAED, index = rateprofitability)
+    parameters2 = []
+    paras2 = []
+    parameters2 = pd.DataFrame(parameters2, columns = reinvestmentrate, index = rateprofitability)
     for i in reinvestmentrate:
         for o in rateprofitability:
-            parameters[o, i] = int(((((((workingcapital.iloc[-1, 0])*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(365/i)-1)*100)
-            paras.append(int(((((((workingcapital.iloc[-1, 0])*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(365/i)-1)*100))
+            parameters2[o, i] = int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100)
+            paras2.append(int((((((workingcapital.iloc[-1, 0]*o-workingcapital.iloc[-1,4])*i)/totalvalue.iloc[-1,0])+1)**(360/i)-1)*100))
     
     reinvestmentratelist = np.repeat(sensitivityrates,len(sensitivityrates))
     reinvestmentratelist = [int(i) for i in reinvestmentratelist]
-    rateprofitabilitylist = 100 * np.tile(sensitivityrates2,len(sensitivityrates2))
-    rateprofitabilitylist = [int(i) for i in rateprofitabilitylist]
 
-    heatmap = pd.DataFrame({'values': paras, 'Reinvestment after every X Days': reinvestmentratelist, 'profitability rate %': rateprofitabilitylist})
+    heatmap = pd.DataFrame({'values': paras2, 'Reinvestment after every X Days': reinvestmentratelist, 'profitability rate %': rateprofitabilitylist})
     
     pvt = pd.pivot_table(pd.DataFrame(heatmap),
         values='values', index='Reinvestment after every X Days', columns='profitability rate %')
-    ax2 = sns.heatmap(pvt, annot=True, annot_kws={"size": 6}, fmt='.2f', vmax = 200, cmap="YlGnBu")
+    ax = sns.heatmap(pvt, annot=True, annot_kws={"size": 6}, fmt='g', vmax = 200, cmap="YlGnBu")
     
-    st.pyplot(st.write(ax2))
+    st.pyplot(st.write(ax))
 
+st.markdown(f"with rate_BTCAED= {workingcapital.iloc[-1, 0]} and dailyprofitability= {kpis.iloc[-1,1]}")
 
 
 """ 
