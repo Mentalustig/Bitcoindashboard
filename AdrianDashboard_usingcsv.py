@@ -104,7 +104,7 @@ for i in (range(0,getrig.status.count())):
         namesinactiverigs += ' '+str(getrig.name.iloc[i])
         
 
-st.markdown(f"Running :white_check_mark: {namesactiverigs} and \n\n :red_circle: **OFFLINE{namesinactiverigs}**")
+st.markdown(f"Running :white_check_mark: {namesactiverigs} \n\n :red_circle: **OFFLINE{namesinactiverigs}**")
 
 st.markdown("<hr/>", unsafe_allow_html=True)
 
