@@ -183,7 +183,7 @@ kpis['Daily BTC'] = pd.to_numeric(kpis['Daily BTC'], downcast="float")
 
 
 #what did I invest
-staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
+staticcapital['Amount Invested'][datetime.datetime(2021, 6, 29)] = 11000
 
 
 """
@@ -193,6 +193,8 @@ staticcapital['Amount Invested'][datetime.datetime(2021, 5, 15)] = 10000
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 20)] = 30000
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 22)] = 70000
 staticcapital['Amount Invested'][datetime.datetime(2021, 5, 26)] = 150000
+staticcapital['Amount Invested'][datetime.datetime(2021, 6, 29)] = 11000
+
 
 for i in range (0, int(((today-startdate).days)+2)):
     try:
